@@ -28,7 +28,7 @@ export class HomePage {
 
   ionViewDidLoad()
   {
-      this.platform.ready().the(()=>
+      this.platform.ready().then(()=>
       {
           this.loadPhotos();
       });
@@ -36,7 +36,7 @@ export class HomePage {
       document.addEventListener('resume', () =>
       {
 
-          if (this.photo.length >0)
+          if (this.photos.length >0)
           {
 
               let today = new Date();
