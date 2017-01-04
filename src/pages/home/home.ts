@@ -67,6 +67,8 @@ export class HomePage {
   loadPhotos():void
   {
 
+      this.loaded =true;
+
 
   }
 
