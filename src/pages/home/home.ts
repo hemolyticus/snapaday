@@ -179,6 +179,25 @@ export class HomePage {
   removePhoto(photo): void
   {
 
+      let today = new Date();
+
+      if (photo.date.setHours(0,0,0,0) === today.setHours(0,0,0,0))
+      {
+
+          this.photoTaken=false;
+
+      }
+
+      let index = this.photos.indexOf(photo);
+
+
+      if (index > -1)
+      {
+
+          this.photos.splice(index, 1);
+          this.save();
+
+      }
 
 
   }
