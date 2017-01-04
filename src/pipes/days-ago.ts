@@ -2,7 +2,7 @@ import { Injectable, Pipe } from '@angular/core';
 
 
 @Pipe({
-  name: 'days-ago'
+  name: 'daysAgo'
 })
 @Injectable()
 export class DaysAgo {

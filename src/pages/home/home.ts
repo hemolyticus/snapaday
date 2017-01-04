@@ -6,6 +6,8 @@ import { SlideshowPage} from '../slideshow/slideshow';
 import { Data } from '../../providers/data'
 import { Camera, File } from 'ionic-native';
 
+
+
 declare var cordova;
 
 @Component({
