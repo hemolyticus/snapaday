@@ -28,6 +28,15 @@ export class HomePage {
 
   ionViewDidLoad()
   {
+      //Test Data
+      this.photos=
+          [
+
+              new PhotoModel('http://placehold.it/100x100', new Date()),
+              new PhotoModel('http://placehold.it/100x100', new Date()),
+              new PhotoModel('http://placehold.it/100x100', new Date())
+          ]
+
       this.platform.ready().then(()=>
       {
           this.loadPhotos();
