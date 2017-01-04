@@ -251,6 +251,20 @@ export class HomePage {
   playSlideshow(): void
   {
 
+    if (this.photos.length>1)
+    {
+
+        let modal = this.modalCtrl.create(SlideshowPage, {photos: this.photos});
+        modal.present();
+
+    }
+    else
+    {
+
+        let alert = this. simpleAlert.createAlert('Oops', 'You need at least two photos before you can play the slideshow');
+        alert.present();
+
+    }
 
   }
 
