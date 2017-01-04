@@ -70,8 +70,97 @@ export class HomePage {
 
   }
 
-  takePhoto():void
+  takePhoto():any
   {
+
+      if (!this.loaded || this.photoTaken)
+      {
+
+          return false;
+      }
+
+      if (!this.platform.is('cordova'))
+      {
+
+          console.log("You can only take photos on a device");
+          return false;
+
+      }
+
+
+      let options =
+          {
+              quality: 100,
+              destinationType: 1,
+              sourceType: 1,
+              encodingType: 0,
+              cameraDirection: 1,
+              saveToPhotoAlbum: true
+
+          };
+
+      Camera.getPicture(options).then
+      (
+
+          (imagePath) =>
+          {
+
+              let currentName =  imagePath.replace(/^.*[\\\/]/, '');
+
+
+              let d  = new Date(),
+                  n = d.getTime(),
+                  newFileName = n + ".jpg";
+
+
+              if (this.platform.is('ios'))
+              {
+
+                  var moveFile =
+                      File.moveFile(cordova.file.tempDirectory, currentName, cordova.file.dataDirectory, newFileName)
+                          .then((success:any) =>
+                              {
+
+                                  this.photoTaken = true;
+                                  this.createPhoto(success.nativeURL);
+                                  this.sharePhoto(success.nativeURL);
+
+                              },
+
+                              (err) =>
+
+                              {
+
+                                  console.log(err);
+                                  let alert = this.simpleAlert.createAlert('Oops', 'Something went wrong');
+                                  alert.present();
+
+                              }
+
+                          );
+              }
+              else
+              {
+
+                  this.photoTaken = true;
+                  this.createPhoto(imagePath);
+                  this.sharePhoto(imagePath);
+              }
+
+          },
+
+          (err) =>
+          {
+
+              let alert = this.simpleAlert.createAlert('Oops','Something went wrong');
+              alert.present();
+
+          }
+
+
+      );
+
+
 
 
   }
