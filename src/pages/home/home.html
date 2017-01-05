@@ -26,9 +26,9 @@
 
     <ion-list>
 
-        <button ion-item *ngIf="!photoTaken" detail-none (click)="takePhoto">
+        <button ion-item *ngIf="!photoTaken" detail-none detail-none (click)="takePhoto">
 
-            <img src="assets/images/smile.png"/>
+            <img src="assets/images/smile.png" class="list-photo"/>
 
         </button>
 
@@ -36,7 +36,7 @@
 
             <ion-item>
 
-                <img [src]="photo.image"/>
+                <img [src]="photo.image" class="list-photo"/>
                 <ion-badge item-right light>{{photo.date | daysAgo}} days ago</ion-badge>
 
             </ion-item>
