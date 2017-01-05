@@ -4,7 +4,7 @@ import { PhotoModel } from '../../models/photo-model';
 import { SimpleAlert } from '../../providers/simple-alert';
 import { SlideshowPage} from '../slideshow/slideshow';
 import { Data } from '../../providers/data'
-import { Camera, File } from 'ionic-native';
+import { Camera, File, SocialSharing } from 'ionic-native';
 
 
 
@@ -270,6 +270,32 @@ export class HomePage {
 
   sharePhoto(image):void
   {
+
+      let alert = this.alertCtrl.create
+  (
+      {
+
+          title:'Nice one',
+          message: 'You\'ve taken your photo for today, would you also like to share it?',
+          buttons:
+              [
+                  {
+                      text: 'No Thanks'
+
+                  },
+
+                  {
+                      text: 'Share',
+                      handler: () =>
+                      {
+                          SocialSharing.share('I am taking a selfie everyday with #Snapaday', null, image, null);
+                      }
+
+                  }
+              ]
+      });
+
+    alert.present();
 
 
   }
